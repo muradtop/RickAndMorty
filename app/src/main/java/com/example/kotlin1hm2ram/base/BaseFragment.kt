@@ -37,6 +37,4 @@ abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
 
     open fun setupObserves() {
     }
-
-
 }

@@ -92,4 +92,9 @@ dependencies {
     def view_biding_property_delegate = '1.5.3'
     // To use only without reflection variants of viewBinding
     implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$view_biding_property_delegate"
+
+
+    // paging3
+    def paging_version = "3.1.1"
+    implementation("androidx.paging:paging-runtime:$paging_version")
 }

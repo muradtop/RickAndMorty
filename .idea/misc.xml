@@ -3,12 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/layout/activity_main.xml" value="0.12335359675785208" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/layout/fragment_characters.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/layout/fragment_characters.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/layout/fragment_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/layout/fragment_episodes.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/layout/fragment_locations.xml" value="0.13541666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/layout/item_characters.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/layout/item_episodes.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/layout/item_locations.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Kotlin1Hm2RaM/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
       </map>
     </option>

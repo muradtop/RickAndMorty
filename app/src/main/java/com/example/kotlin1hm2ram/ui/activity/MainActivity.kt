@@ -38,6 +38,5 @@ class MainActivity : AppCompatActivity() {
             R.id.episodesFragment
         ).build()
         setupWithNavController(binding.bottomNavigation, navController)
-        setupWithNavController(binding.toolbarMain, navController, appBarConfiguration)
     }
 }
