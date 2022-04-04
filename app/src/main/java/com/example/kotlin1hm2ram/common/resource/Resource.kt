@@ -1,5 +1,6 @@
 package com.example.kotlin1hm2ram.common.resource
 
+
 sealed class Resource<out T>(
     val data: T? = null,
     val message: String? = null,

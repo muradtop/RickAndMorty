@@ -16,7 +16,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.kotlin1lesson2"
+        applicationId "com.example.kotlin1Hm2RaM"
         minSdk 22
         targetSdk 32
         versionCode 1
@@ -77,8 +77,10 @@ dependencies {
 
     // Lifecycle
     def lifecycle_version = "2.5.0-alpha04"
+
     //ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+
     //LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
@@ -93,8 +95,13 @@ dependencies {
     // To use only without reflection variants of viewBinding
     implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$view_biding_property_delegate"
 
+    //Room
+    def roomVersion = "2.4.2"
 
-    // paging3
-    def paging_version = "3.1.1"
-    implementation("androidx.paging:paging-runtime:$paging_version")
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$roomVersion")
+
+
 }

@@ -32,6 +32,8 @@
             android:textSize="22sp"
             tools:text="@tools:sample/full_names" />
 
+
+
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

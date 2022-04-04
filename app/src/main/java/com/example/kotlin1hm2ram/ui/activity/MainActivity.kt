@@ -1,6 +1,7 @@
 package com.example.kotlin1hm2ram.ui.activity
 
 import android.os.Bundle
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initBottomNavigation()
         changeTitleToolbar()
+
     }
 
     private fun initBottomNavigation() {
