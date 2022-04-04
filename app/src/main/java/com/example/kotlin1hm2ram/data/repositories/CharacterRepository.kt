@@ -1,20 +1,27 @@
 package com.example.kotlin1hm2ram.data.repositories
 
-import androidx.lifecycle.liveData
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import com.example.kotlin1hm2ram.common.resource.Resource
+
+import com.example.kotlin1hm2ram.base.BaseRepository
+import com.example.kotlin1hm2ram.data.local.db.daos.CharacterDao
 import com.example.kotlin1hm2ram.data.remote.apiservices.CharacterApiService
-import com.example.kotlin1hm2ram.data.remote.pagingsources.CharacterPagingSource
-import kotlinx.coroutines.Dispatchers
+import com.example.kotlin1hm2ram.models.RickAndMortyCharacters
+
 import javax.inject.Inject
 
-class CharacterRepository @Inject constructor(private val service: CharacterApiService) {
+class CharacterRepository @Inject constructor(
+    private val service: CharacterApiService,
+    private val characterDao: CharacterDao
+) :
+    BaseRepository() {
 
-    fun fetchCharacters() = Pager(PagingConfig(pageSize = 20)) {
-      CharacterPagingSource(service)
-    }.flow
+    fun fetchCharacters(page: Int) = doRequest(
+        { service.fetchCharacters(page) },
+        { characters -> characterDao.insertAll(* characters.results.toTypedArray()) })
 
 
+    fun getCharacters() = doRequest {
+        characterDao.getAll()
+    }
 
 }
+

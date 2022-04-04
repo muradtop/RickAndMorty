@@ -28,10 +28,13 @@ class RetrofitClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun providerCharacterApiService(): CharacterApiService = retrofit.create(CharacterApiService::class.java)
+    fun providerCharacterApiService(): CharacterApiService =
+        retrofit.create(CharacterApiService::class.java)
 
-    fun providerEpisodesApiService(): EpisodesApiService = retrofit.create(EpisodesApiService::class.java)
+    fun providerEpisodesApiService(): EpisodesApiService =
+        retrofit.create(EpisodesApiService::class.java)
 
-    fun providerLocationsApiService(): LocationsApiService = retrofit.create(LocationsApiService::class.java)
+    fun providerLocationsApiService(): LocationsApiService =
+        retrofit.create(LocationsApiService::class.java)
 
 }

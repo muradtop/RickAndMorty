@@ -5,7 +5,4 @@ import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 
 fun ImageView.setImage(url: String) =
-    Glide.with(this)
-        .load(url)
-        .into(this)
-
+    Glide.with(this).load(url).into(this)
