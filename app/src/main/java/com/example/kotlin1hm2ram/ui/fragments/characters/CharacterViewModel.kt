@@ -6,11 +6,12 @@ import com.example.kotlin1hm2ram.base.BaseViewModel
 import com.example.kotlin1hm2ram.data.repositories.CharacterRepository
 import com.example.kotlin1hm2ram.models.RickAndMortyCharacters
 import com.example.kotlin1hm2ram.models.RickAndMortyResponse
+
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class CharactersViewModel @Inject constructor(
+class CharactersViewModel  @Inject constructor(
     private val repository: CharacterRepository,
 ) : BaseViewModel() {
 
@@ -23,7 +24,7 @@ class CharactersViewModel @Inject constructor(
     private val _characterLocaleState = MutableLiveData<List<RickAndMortyCharacters>>()
     val characterLocaleState: LiveData<List<RickAndMortyCharacters>> = _characterLocaleState
 
-    suspend fun fetchCharacter() {
+    fun fetchCharacter() {
         isLoading = true
         repository.fetchCharacters(page).collect(_characterState) {
             page++
@@ -34,3 +35,6 @@ class CharactersViewModel @Inject constructor(
     fun getCharacters() = repository.getCharacters().collect(_characterLocaleState, null)
 
 }
+
+
+

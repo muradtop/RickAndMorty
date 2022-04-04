@@ -9,11 +9,10 @@ import com.example.kotlin1hm2ram.R
 import com.example.kotlin1hm2ram.base.BaseFragment
 import com.example.kotlin1hm2ram.common.extensions.submitData
 import com.example.kotlin1hm2ram.databinding.FragmentEpisodesBinding
-import com.example.kotlin1hm2ram.models.RickAndMortyEpisodes
 import com.example.kotlin1hm2ram.ui.adapters.EpisodesAdapter
 import com.example.kotlin1hm2ram.utils.PaginationScrollListener
-import dagger.hilt.android.AndroidEntryPoint
 
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class EpisodesFragment : BaseFragment<FragmentEpisodesBinding, EpisodesViewModel>(
@@ -28,7 +27,7 @@ class EpisodesFragment : BaseFragment<FragmentEpisodesBinding, EpisodesViewModel
         setupAdapter()
     }
 
-    override fun setupObserves() {
+    override fun setupObserver() {
         subscribeToEpisodes()
         subscribeToEpisodesLocale()
     }
@@ -55,11 +54,11 @@ class EpisodesFragment : BaseFragment<FragmentEpisodesBinding, EpisodesViewModel
 
     private fun subscribeToEpisodesLocale() {
         viewModel.episodesLocaleState.observe(viewLifecycleOwner) {
-            episodesAdapter.submitData(it as ArrayList<RickAndMortyEpisodes>)
+            episodesAdapter.submitData(it)
         }
     }
 
-    override suspend fun setupRequests() {
+    override fun setupRequest() {
         if (viewModel.episodesState.value == null && isOnline()) viewModel.fetchEpisodes()
         else viewModel.getEpisodes()
     }
@@ -71,3 +70,4 @@ class EpisodesFragment : BaseFragment<FragmentEpisodesBinding, EpisodesViewModel
         return netInfo != null && netInfo.isConnectedOrConnecting
     }
 }
+

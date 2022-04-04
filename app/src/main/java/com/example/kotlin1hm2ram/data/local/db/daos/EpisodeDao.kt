@@ -6,12 +6,12 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.kotlin1hm2ram.models.RickAndMortyEpisodes
 
-
 @Dao
-interface EpisodesDao {
+interface EpisodeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg users: RickAndMortyEpisodes)
+    suspend fun insertAllEpisode(vararg episode: RickAndMortyEpisodes)
 
-    @Query("SELECT *FROM rickandmortyepisodes ")
-    suspend fun getAll(): List<RickAndMortyEpisodes>
+    @Query("SELECT * FROM rickandmortyepisodes")
+    suspend fun getAllEpisode(): List<RickAndMortyEpisodes>
+
 }

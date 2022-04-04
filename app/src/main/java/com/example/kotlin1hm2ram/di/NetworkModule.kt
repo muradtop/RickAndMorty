@@ -11,18 +11,21 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+
     @Singleton
-    val retrofitClient = RetrofitClient()
+    private val retrofitClient = RetrofitClient()
 
     @Singleton
     @Provides
-    fun providerCharacterApiService() = retrofitClient.providerCharacterApiService()
+    fun provideCharactersApiService() = retrofitClient.provideCharactersApiService()
 
     @Singleton
     @Provides
-    fun provideEpisodeApiService() = retrofitClient.providerEpisodesApiService()
+    fun provideLocationsApiService() = retrofitClient.provideLocationApiService()
 
     @Singleton
     @Provides
-    fun provideLocationsApiService() = retrofitClient.providerLocationsApiService()
+    fun provideEpisodesApiService() = retrofitClient.provideEpisodesApiService()
+
+
 }

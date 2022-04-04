@@ -11,8 +11,8 @@ import com.example.kotlin1hm2ram.models.RickAndMortyCharacters
 interface CharacterDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg characters: RickAndMortyCharacters)
+    suspend fun insertAll(vararg character: RickAndMortyCharacters)
 
-    @Query("SELECT *FROM rickandmortycharacters")
+    @Query("SELECT * FROM rickandmortycharacters")
     suspend fun getAll(): List<RickAndMortyCharacters>
 }

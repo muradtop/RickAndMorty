@@ -14,6 +14,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppDatabaseModule {
 
+
     @Singleton
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context) =
@@ -22,18 +23,17 @@ object AppDatabaseModule {
 
     @Singleton
     @Provides
-    fun provideCharacterDao(characterAppDatabase: AppDatabase) =
-        RoomClient().provideCharacterDao(characterAppDatabase)
+    fun provideCharacterDao(appDatabase: AppDatabase) =
+        RoomClient().provideCharacterDao(appDatabase)
 
+
+    @Singleton
+    @Provides
+    fun provideEpisodeDao(episodeAppDatabase: AppDatabase) =
+        RoomClient().provideEpisodeDao(episodeAppDatabase)
 
     @Singleton
     @Provides
     fun provideLocationDao(locationAppDatabase: AppDatabase) =
         RoomClient().provideLocationDao(locationAppDatabase)
-
-    @Singleton
-    @Provides
-    fun provideEpisodesDao(episodesAppDatabase: AppDatabase) =
-        RoomClient().provideEpisodesDao(episodesAppDatabase)
-
 }

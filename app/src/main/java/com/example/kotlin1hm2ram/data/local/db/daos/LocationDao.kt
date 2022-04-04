@@ -7,10 +7,11 @@ import androidx.room.Query
 import com.example.kotlin1hm2ram.models.RickAndMortyLocations
 
 @Dao
-interface LocationsDao {
+interface LocationDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg users: RickAndMortyLocations)
+    suspend fun insertAllLocation(vararg locations: RickAndMortyLocations)
 
     @Query("SELECT *FROM rickandmortylocations ")
-    suspend fun getAll(): List<RickAndMortyLocations>
+    suspend fun getAllLocation(): List<RickAndMortyLocations>
 }

@@ -1,6 +1,5 @@
 package com.example.kotlin1hm2ram.ui.fragments.characters
 
-
 import android.content.Context.CONNECTIVITY_SERVICE
 import android.net.ConnectivityManager
 import androidx.fragment.app.viewModels
@@ -9,11 +8,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kotlin1hm2ram.R
 import com.example.kotlin1hm2ram.base.BaseFragment
 import com.example.kotlin1hm2ram.common.extensions.submitData
-import com.example.kotlin1hm2ram.utils.PaginationScrollListener
 import com.example.kotlin1hm2ram.databinding.FragmentCharactersBinding
-import com.example.kotlin1hm2ram.ui.adapters.CharacterAdapter
+import com.example.kotlin1hm2ram.ui.adapters.CharactersAdapter
+import com.example.kotlin1hm2ram.utils.PaginationScrollListener
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class CharactersFragment : BaseFragment<FragmentCharactersBinding, CharactersViewModel>(
@@ -21,13 +19,13 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding, CharactersVie
 ) {
     override val binding by viewBinding(FragmentCharactersBinding::bind)
     override val viewModel: CharactersViewModel by viewModels()
-    private val characterAdapter = CharacterAdapter()
+    private val charactersAdapter = CharactersAdapter()
 
     override fun setupViews() {
         setupAdapter()
     }
 
-    override fun setupObserves() {
+    override fun setupObserver() {
         subscribeToCharacters()
         subscribeToCharactersLocale()
 
@@ -36,7 +34,7 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding, CharactersVie
     private fun setupAdapter() = with(binding.recyclerviewCharacter) {
         val linearLayoutManager = LinearLayoutManager(context)
         layoutManager = linearLayoutManager
-        adapter = characterAdapter
+        adapter = charactersAdapter
 
         addOnScrollListener(object :
             PaginationScrollListener(linearLayoutManager, {
@@ -48,18 +46,17 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding, CharactersVie
 
     private fun subscribeToCharacters() {
         viewModel.characterState.observe(viewLifecycleOwner) {
-            characterAdapter.submitData(it.results)
+            charactersAdapter.submitData(it.results)
         }
     }
 
     private fun subscribeToCharactersLocale() {
         viewModel.characterLocaleState.observe(viewLifecycleOwner) {
-            characterAdapter.submitData(it)
-
+            charactersAdapter.submitData(it)
         }
     }
 
-    override suspend fun setupRequests() {
+    override fun setupRequest() {
         if (viewModel.characterState.value == null && isOnline()) viewModel.fetchCharacter()
         else viewModel.getCharacters()
     }
@@ -70,3 +67,4 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding, CharactersVie
         return netInfo != null && netInfo.isConnectedOrConnecting
     }
 }
+

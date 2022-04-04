@@ -9,11 +9,10 @@ import com.example.kotlin1hm2ram.R
 import com.example.kotlin1hm2ram.base.BaseFragment
 import com.example.kotlin1hm2ram.common.extensions.submitData
 import com.example.kotlin1hm2ram.databinding.FragmentLocationsBinding
-import com.example.kotlin1hm2ram.models.RickAndMortyLocations
-import com.example.kotlin1hm2ram.ui.adapters.LocationAdapter
+import com.example.kotlin1hm2ram.ui.adapters.LocationsAdapter
 import com.example.kotlin1hm2ram.utils.PaginationScrollListener
-import dagger.hilt.android.AndroidEntryPoint
 
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LocationsFragment : BaseFragment<FragmentLocationsBinding, LocationsViewModel>(
@@ -21,26 +20,26 @@ class LocationsFragment : BaseFragment<FragmentLocationsBinding, LocationsViewMo
 ) {
     override val binding by viewBinding(FragmentLocationsBinding::bind)
     override val viewModel: LocationsViewModel by viewModels()
-    private val locationAdapter = LocationAdapter()
+    private val locationAdapter = LocationsAdapter()
+
+    override fun setupObserver() {
+        subscribeToLocations()
+        subscribeToLocationLocale()
+    }
 
     override fun setupViews() {
         setupAdapter()
     }
 
-    override fun setupObserves() {
-        subscribeToLocations()
-        subscribeToLocationLocale()
-
-    }
-
     private fun setupAdapter() = with(binding.recyclerviewLocations) {
+        adapter = locationAdapter
         val linearLayoutManager = LinearLayoutManager(context)
         layoutManager = linearLayoutManager
-        adapter = locationAdapter
 
         addOnScrollListener(object :
             PaginationScrollListener(linearLayoutManager, {
-                if (isOnline()) viewModel.fetchLocations() else null
+                if (isOnline()) viewModel.fetchLocation()
+                else null
             }) {
             override fun isLoading() = viewModel.isLoading
         })
@@ -49,28 +48,25 @@ class LocationsFragment : BaseFragment<FragmentLocationsBinding, LocationsViewMo
     private fun subscribeToLocations() {
         viewModel.locationsState.observe(viewLifecycleOwner) {
             locationAdapter.submitData(it.results)
+
         }
     }
 
     private fun subscribeToLocationLocale() {
-        viewModel.locationsLocaleState.observe(viewLifecycleOwner) {
-            locationAdapter.submitData(it as ArrayList<RickAndMortyLocations>)
-
+        viewModel.episodesLocaleState.observe(viewLifecycleOwner) {
+            locationAdapter.submitData(it)
         }
     }
 
-    override suspend fun setupRequests() {
-        if (viewModel.locationsState.value == null && isOnline()) viewModel.fetchLocations()
-        else viewModel.getLocations()
+    override fun setupRequest() {
+        if (viewModel.locationsState.value == null && isOnline()) viewModel.fetchLocation()
+        else viewModel.getLocation()
     }
 
     fun isOnline(): Boolean {
-        val cm = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val cm =
+            requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val netInfo = cm.activeNetworkInfo
         return netInfo != null && netInfo.isConnectedOrConnecting
     }
 }
-
-
-
-
