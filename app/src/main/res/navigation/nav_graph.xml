@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/charactersFragment"
-        android:name="com.example.kotlin1hm2ram.ui.fragments.characters.CharactersFragment"
+        android:name="com.example.kotlin1hm2ram.ui.fragments.characters.CharacterFragment"
         android:label="fragment_characters"
         tools:layout="@layout/fragment_characters" >
         <action
@@ -16,19 +16,19 @@
     </fragment>
     <fragment
         android:id="@+id/episodesFragment"
-        android:name="com.example.kotlin1hm2ram.ui.fragments.episodes.EpisodesFragment"
+        android:name="com.example.kotlin1hm2ram.ui.fragments.episodes.EpisodeFragment"
         android:label="fragment_episodes"
         tools:layout="@layout/fragment_episodes" />
     <fragment
         android:id="@+id/locationsFragment"
-        android:name="com.example.kotlin1hm2ram.ui.fragments.locations.LocationsFragment"
+        android:name="com.example.kotlin1hm2ram.ui.fragments.locations.LocationFragment"
         android:label="fragment_locations"
         tools:layout="@layout/fragment_locations" />
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.kotlin1hm2ram.ui.fragments.characters.detail.DetailFragment"
+        android:name="com.example.kotlin1hm2ram.ui.fragments.characters.detail.CharacterDetailsFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_character_details" >
         <argument
             android:name="id"
             app:argType="integer" />
