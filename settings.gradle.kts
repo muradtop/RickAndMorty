@@ -15,4 +15,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "kotlin1Hm2RaM"
-include ':app'
+include(":app")
